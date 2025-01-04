@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstrohal <pstrohal@42.heilbronn.de>        #+#  +:+       +#+        */
+/*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-19 22:08:49 by pstrohal          #+#    #+#             */
-/*   Updated: 2024-12-19 22:08:49 by pstrohal         ###   ########.fr       */
+/*   Created: 2024/12/19 22:08:49 by pstrohal          #+#    #+#             */
+/*   Updated: 2025/01/04 14:46:51 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

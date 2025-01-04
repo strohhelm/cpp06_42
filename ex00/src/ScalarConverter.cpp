@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConveter.cpp                                 :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstrohal <pstrohal@42.heilbronn.de>        #+#  +:+       +#+        */
+/*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-19 22:09:13 by pstrohal          #+#    #+#             */
-/*   Updated: 2024-12-19 22:09:13 by pstrohal         ###   ########.fr       */
+/*   Created: 2024/12/19 22:09:13 by pstrohal          #+#    #+#             */
+/*   Updated: 2025/01/04 14:42:37 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,29 +103,51 @@ void ScalarConverter::convert(std::string input)
 	std::string tmp = input;
 	int i = check_type(input);
 	
+	std::cout<<"char: ";
 	if (i != CHAR)
 	{
-		std::cout<<"char: ";
 		try {std::cout<<to_char(std::stoi(input))<<std::endl;}
 		catch (...){std::cout<<"impossible"<<std::endl;}
 	}
+	else
+		std::cout<<input<<std::endl;
+
+	std::cout<<"int: ";
 	if (i != INTEGER)
 	{
-		std::cout<<"int: ";
 		try {std::cout<<std::stoi(input)<<"\n";}
 		catch (...){std::cout<<"impossible\n";}
 	}
+	else
+		std::cout<<input<<std::endl;
+
+	std::cout<<"float: ";
 	if ( i != FLOAT)
 	{
-		std::cout<<"float: ";
-		try {std::cout<<std::stof(input) <<"f\n";}
+		try { float f =  std::stof(input);
+			std::string str = std::to_string(f);
+			if (!str.find('.'))
+				str += ".0";
+			std::cout<<str<<"f"<<std::endl;
+			}
 		catch(...){std::cout<<"impossible"<<std::endl;}
 	}
+	else
+		std::cout<<input<<std::endl;
+
+	std::cout<<"double: ";
 	if (i != DOUBLE)
 	{
-		std::cout<<"double: ";
-		try {std::cout<<std::stod(input)<<std::endl;}
+		try { double d = std::stod(input);
+			// std::cout<<d;
+			std::string str = std::to_string(d);
+			if (!str.find('.'))
+				str += ".0";
+			std::cout<<str<<std::endl;
+			}
 		catch(...){std::cout<<"impossible"<<std::endl;}
 	}
+	else
+		std::cout<<input<<std::endl;
 	return ;
 }
