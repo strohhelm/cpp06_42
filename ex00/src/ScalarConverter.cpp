@@ -6,7 +6,7 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:09:13 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/04 14:42:37 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:17:17 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ScalarConverter::ScalarConverter(){}
 /* ************************************************************************** */
 
 
-bool isInt(std::string in)
+bool ScalarConverter::isInt(std::string in)
 {
 	size_t len = in.length();
 	for(size_t i = 0; i < len; i++)
@@ -40,7 +40,7 @@ bool isInt(std::string in)
 	return true ;
 }
 
-int isFloatOrDouble(std::string in)
+e_type ScalarConverter::isFloatOrDouble(std::string in)
 {
 	int dotCount = 0;
 	size_t len = in.length();
@@ -78,17 +78,17 @@ int isFloatOrDouble(std::string in)
 }
 
 
-int	check_type(std::string input)
+e_type	ScalarConverter::check_type(std::string input)
 {
-	int i = INVALID;
+	e_type type = INVALID;
 	
 	if (input.size()== 1 && std::isprint(input[0]))
-		i = CHAR;
+		type = CHAR;
 	else if (isInt(input))
-		i = INTEGER;
+		type = INTEGER;
 	else
-		i = isFloatOrDouble(input);
-	return i;
+		type = isFloatOrDouble(input);
+	return type;
 }
 
 std::string to_char(int i)
@@ -100,14 +100,20 @@ std::string to_char(int i)
 
 void ScalarConverter::convert(std::string input)
 {
-	std::string tmp = input;
-	int i = check_type(input);
-	
+	char	c;
+	int		i;
+	float	f;
+	double	d;
+	e_type type = check_type(input);
+	switch (type)
+	{
+		case CHAR:
+			c = 
+	}
 	std::cout<<"char: ";
 	if (i != CHAR)
 	{
-		try {std::cout<<to_char(std::stoi(input))<<std::endl;}
-		catch (...){std::cout<<"impossible"<<std::endl;}
+		
 	}
 	else
 		std::cout<<input<<std::endl;
@@ -115,8 +121,7 @@ void ScalarConverter::convert(std::string input)
 	std::cout<<"int: ";
 	if (i != INTEGER)
 	{
-		try {std::cout<<std::stoi(input)<<"\n";}
-		catch (...){std::cout<<"impossible\n";}
+	
 	}
 	else
 		std::cout<<input<<std::endl;
@@ -124,13 +129,7 @@ void ScalarConverter::convert(std::string input)
 	std::cout<<"float: ";
 	if ( i != FLOAT)
 	{
-		try { float f =  std::stof(input);
-			std::string str = std::to_string(f);
-			if (!str.find('.'))
-				str += ".0";
-			std::cout<<str<<"f"<<std::endl;
-			}
-		catch(...){std::cout<<"impossible"<<std::endl;}
+		
 	}
 	else
 		std::cout<<input<<std::endl;
@@ -138,14 +137,7 @@ void ScalarConverter::convert(std::string input)
 	std::cout<<"double: ";
 	if (i != DOUBLE)
 	{
-		try { double d = std::stod(input);
-			// std::cout<<d;
-			std::string str = std::to_string(d);
-			if (!str.find('.'))
-				str += ".0";
-			std::cout<<str<<std::endl;
-			}
-		catch(...){std::cout<<"impossible"<<std::endl;}
+	
 	}
 	else
 		std::cout<<input<<std::endl;
