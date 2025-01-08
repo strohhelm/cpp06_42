@@ -6,7 +6,7 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:09:13 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/07 16:26:59 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:57:47 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,8 @@ void ScalarConverter::convert_float(u_cifd value, int &decimalPlaces)
 		std::cout	<<std::fixed<<std::setprecision(1);
 	else
 	{
-		if (decimalPlaces > std::numeric_limits<float>::max_digits10)
-			std::cout<<std::fixed<<std::setprecision(std::numeric_limits<float>::max_digits10);
+		if (decimalPlaces > std::numeric_limits<float>::digits10)
+			std::cout<<std::fixed<<std::setprecision(std::numeric_limits<float>::digits10);
 		else
 			std::cout<<std::fixed<<std::setprecision(decimalPlaces);
 	}
@@ -198,8 +198,8 @@ void ScalarConverter::convert_double(u_cifd value, int &decimalPlaces)
 		else
 			std::cout<<"int: "<< static_cast<int>(value.d)<<std::endl;
 
-		if (decimalPlaces > std::numeric_limits<float>::max_digits10)
-			std::cout<<std::setprecision(std::numeric_limits<float>::max_digits10);
+		if (decimalPlaces > std::numeric_limits<float>::digits10)
+			std::cout<<std::setprecision(std::numeric_limits<float>::digits10);
 		else if (!std::fmod(value.d, static_cast<int>(value.d)))
 			std::cout	<<std::fixed<<std::setprecision(1);
 		else
@@ -209,8 +209,8 @@ void ScalarConverter::convert_double(u_cifd value, int &decimalPlaces)
 		else
 			std::cout	<<"float: "<< static_cast<float>(value.d)<<"f"<<std::endl;
 	}
-	if (decimalPlaces > std::numeric_limits<double>::max_digits10)
-		std::cout<<std::setprecision(std::numeric_limits<double>::max_digits10);
+	if (decimalPlaces > std::numeric_limits<double>::digits10)
+		std::cout<<std::setprecision(std::numeric_limits<double>::digits10);
 	else if (!std::fmod(value.d, static_cast<int>(value.d)))
 		std::cout	<<std::fixed<<std::setprecision(1);
 	else
