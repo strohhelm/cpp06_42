@@ -6,12 +6,11 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:15:34 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/08 18:35:49 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:16:41 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <random>
-// #include <cstdlib>
 #include <iostream>
 #include "A.hpp"
 #include "B.hpp"
@@ -21,20 +20,20 @@
 
 Base* generate(void)
 {
-	static std::random_device	rd;
-	static std::mt19937		gen(rd);
-	static std::uniform_int_distribution<int> dis(0, 2);
-	
-	switch (dis(gen))
+	static std::random_device	device;
+	static std::mt19937		generator(device());
+	static std::uniform_int_distribution<> distribution(0, 2);
+
+	switch (distribution(generator))
 	{
 		case 0:
-			std::cout <<"generated obj of A"<<std::endl;
+			std::cout <<"A"<<std::endl;
 			return new A;
 		case 1:
-			std::cout <<"generated obj of B"<<std::endl;
+			std::cout <<"B"<<std::endl;
 			return new B;
 		case 2:
-			std::cout <<"generated obj of C"<<std::endl;
+			std::cout <<"C"<<std::endl;
 			return new C;
 		default:
 			std::exit(1);
@@ -44,30 +43,32 @@ Base* generate(void)
 void identify(Base *p)
 {
 	if (dynamic_cast<A*>(p))
-		std::cout << "Pointer is a A ClassPointer"<<std::endl;
+		std::cout << "A"<<std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "Pointer is a B ClassPointer"<<std::endl;
-	else
-		std::cout << "Pointer is a C ClassPointer"<<std::endl;
+		std::cout << "B"<<std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << "C"<<std::endl;
 	return;
 }
-
 
 void identify(Base& p)
 {
 	try {
 		(void)dynamic_cast<A&>(p);
-		std::cout<<"This is a reference to an object of A"<<std::endl;
+		std::cout<<"A"<<std::endl;
+		return;
 	}
 	catch (...){}
 	try {
 		(void)dynamic_cast<B&>(p);
-		std::cout<<"This is a reference to an object of B"<<std::endl;
+		std::cout<<"B"<<std::endl;
+		return;
 	}
 	catch (...){}
 	try {
 		(void)dynamic_cast<C&>(p);
-		std::cout<<"This is a reference to an object of C"<<std::endl;
+		std::cout<<"C"<<std::endl;
+		return;
 	}
 	catch (...){}
 	return;
@@ -76,13 +77,37 @@ void identify(Base& p)
 int main (void)
 {
 	Base *p;
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		p = generate();
 		identify(p);
 		identify(*p);
+		std::cout<<std::endl;
 		delete p;
 		p = nullptr;
 	}
+
+	Base ba;
+	identify(&ba);
+
+	std::cout<<"========================="<<std::endl;
+	identify(generate());
+	identify(generate());
+	identify(generate());
+	std::cout<<"========================="<<std::endl;
+	
+	A a;
+	B b;
+	C c;
+	identify(&a);
+	identify(a);
+	std::cout<<"========================="<<std::endl;
+
+	identify(&b);
+	identify(b);
+	std::cout<<"========================="<<std::endl;
+
+	identify(&c);
+	identify(c);
 	return 0;
 }
