@@ -6,10 +6,10 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:16:44 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/08 17:17:10 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/14 19:22:20 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Base.hpp"
 
-Base::~Base(){};
+Base::~Base(){}

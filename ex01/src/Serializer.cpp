@@ -6,14 +6,14 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:54:12 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/08 11:23:21 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:02:12 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Serializer.hpp"
 
-Serializer::Serializer(){};
-Serializer::~Serializer(){};
+// Serializer::Serializer(){};
+// Serializer::~Serializer(){};
 
 uintptr_t Serializer::serialize(Data* ptr)
 {

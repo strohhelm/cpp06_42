@@ -6,7 +6,7 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:15:34 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/09 11:16:41 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/14 19:17:55 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 Base* generate(void)
 {
-	static std::random_device	device;
-	static std::mt19937		generator(device());
-	static std::uniform_int_distribution<> distribution(0, 2);
+	static std::random_device				device;
+	static std::mt19937						generator(device());
+	static std::uniform_int_distribution<>	distribution(0, 2);
 
 	switch (distribution(generator))
 	{

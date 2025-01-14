@@ -6,7 +6,7 @@
 /*   By: pstrohal <pstrohal@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:53:54 by pstrohal          #+#    #+#             */
-/*   Updated: 2025/01/08 11:33:04 by pstrohal         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:57:23 by pstrohal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ typedef struct Data
 class Serializer
 {
 	private:
-		Serializer();
-		~Serializer();
+		Serializer() = default;
+		~Serializer() = default;
+		Serializer(const Serializer& src) = delete;
+		Serializer& operator=(Serializer& src) = delete;
 		
 	public:
 		static uintptr_t serialize(Data* ptr);

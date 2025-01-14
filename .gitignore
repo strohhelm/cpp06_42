@@ -2,3 +2,5 @@
 ScalarConverter
 convert
 obj
+Serializer
+BaseGenerator
